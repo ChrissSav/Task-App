@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axiosApp from '../../axiosApp';
 
 const Login = ({}) => {
   const [email, setEmail] = useState('');
@@ -6,7 +7,16 @@ const Login = ({}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    window.location.href = '/';
+    console.log('roijgiurgrg');
+
+    if (password && email) {
+      axiosApp.post('/login', {
+        username: email,
+        password: password,
+      });
+    }
+
+    //window.location.href = '/';
     //history.push('/');
   };
 
@@ -18,11 +28,25 @@ const Login = ({}) => {
       >
         <div className='form-control'>
           <label>UserName</label>
-          <input type='text' placeholder='UserName' />
+          <input
+            type='text'
+            placeholder='UserName'
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
         </div>
         <div className='form-control'>
           <label>Password</label>
-          <input type='password' placeholder='password' />
+          <input
+            type='password'
+            placeholder='password'
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
         </div>
 
         <input
