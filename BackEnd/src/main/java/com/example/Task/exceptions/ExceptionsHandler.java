@@ -1,6 +1,7 @@
 package com.example.Task.exceptions;
 
 import com.example.Task.dto.BaseResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -23,16 +24,15 @@ import javax.validation.ConstraintViolationException;
 
 
 @ControllerAdvice
+@Slf4j
 public class ExceptionsHandler {
-
-    Logger log = LogManager.getLogger(ExceptionsHandler.class);
 
     @ExceptionHandler(value = {ConflictException.class})
     @ResponseBody
     @ResponseStatus(HttpStatus.CONFLICT)
     public BaseResponse<Object> handleApiException(ConflictException conflictException) {
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-        baseResponse.setError(conflictException.getCustomMsg());
+        baseResponse.setError(conflictException.getMessage());
         return baseResponse;
     }
 
@@ -40,7 +40,7 @@ public class ExceptionsHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public BaseResponse<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
-        log.error(ex);
+        log.error(ex.getMessage());
         FieldError fieldError = ex.getBindingResult().getFieldError();
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
         baseResponse.setError(ExceptionCodes.NOT_VALID_PAYLOAD);
@@ -55,7 +55,7 @@ public class ExceptionsHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public BaseResponse<Object> handleMethodArgumentNotValid(HttpMessageNotReadableException ex) {
-        log.error(ex);
+        log.error(ex.getMessage());
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
         baseResponse.setError(ExceptionCodes.NOT_VALID_PAYLOAD + ", HttpMessageNotReadableException");
         return baseResponse;
@@ -65,7 +65,7 @@ public class ExceptionsHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public BaseResponse<Object> handleConstraintViolationExceptions(ConstraintViolationException ex) {
-        log.error(ex);
+        log.error(ex.getMessage());
         String exceptionResponse = String.format("Invalid input parameters: %s", ex.getMessage());
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
         baseResponse.setError(exceptionResponse);
@@ -76,7 +76,7 @@ public class ExceptionsHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public BaseResponse<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
-        log.error(ex);
+        log.error(ex.getMessage());
         String exception = String.format("%s, invalid input parameter", ex.getName());
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
         baseResponse.setError(exception);
@@ -89,7 +89,7 @@ public class ExceptionsHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public BaseResponse<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
-        log.error(ex);
+        log.error(ex.getMessage());
         String exception = String.format("%s, invalid input parameter", ex.getParameterName());
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
         baseResponse.setError(exception);
@@ -121,7 +121,7 @@ public class ExceptionsHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public BaseResponse<Object> handle(Exception ex, HttpServletRequest request, HttpServletResponse response) {
-        log.error(ex);
+        log.error(ex.getMessage());
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
         baseResponse.setError(ExceptionCodes.SOMETHING_WRONG);
         return baseResponse;

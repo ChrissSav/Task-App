@@ -7,13 +7,6 @@ public class ConflictException extends RuntimeException {
     public ConflictException() {
     }
 
-    public String getCustomMsg() {
-        return msg;
-    }
-
-    public ConflictException(ExceptionCodes exceptionCodes) {
-        this.msg = exceptionCodes.toString();
-    }
 
     public ConflictException(String message) {
         super(message);
