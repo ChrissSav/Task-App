@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07fc1d66-71e2-425b-9070-df7647914b42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/controller/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/dto/task/AddTaskRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/dto/task/TaskResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/mapper/TaskMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/service/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/TaskApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/TaskApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/dto/BaseResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/dto/BaseResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionCodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionCodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/CustomAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/CustomAuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/controller/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/repository/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/service/TaskService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,22 +110,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628851305016" />
-    <state width="2322" height="193" key="GridCell.Tab.0.bottom" timestamp="1628936981223">
+    <state width="2838" height="33" key="GridCell.Tab.0.bottom" timestamp="1628962134699">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="2322" height="193" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628936981223" />
-    <state width="2322" height="193" key="GridCell.Tab.0.center" timestamp="1628936981223">
+    <state width="2838" height="33" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628962134699" />
+    <state width="2838" height="33" key="GridCell.Tab.0.center" timestamp="1628962134699">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="2322" height="193" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628936981223" />
-    <state width="2322" height="193" key="GridCell.Tab.0.left" timestamp="1628936981223">
+    <state width="2838" height="33" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628962134699" />
+    <state width="2838" height="33" key="GridCell.Tab.0.left" timestamp="1628962134699">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="2322" height="193" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628936981223" />
-    <state width="2322" height="193" key="GridCell.Tab.0.right" timestamp="1628936981223">
+    <state width="2838" height="33" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628962134699" />
+    <state width="2838" height="33" key="GridCell.Tab.0.right" timestamp="1628962134699">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="2322" height="193" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628936981223" />
+    <state width="2838" height="33" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628962134699" />
     <state width="2256" height="347" key="GridCell.Tab.1.bottom" timestamp="1628934934873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

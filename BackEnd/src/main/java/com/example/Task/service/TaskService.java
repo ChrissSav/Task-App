@@ -47,6 +47,14 @@ public class TaskService {
         return tasks.stream().map(taskMapper::mapToTaskResponse).collect(Collectors.toList());
     }
 
+
+    public TaskResponse updateTask(String taskId, boolean reminder) {
+        Task task = taskRepository.findByIdAndCreatorId(taskId, authService.getCurrentUser().getId())
+                .orElseThrow(() -> new ConflictException(ExceptionCodes.TASK_NOT_FOUND));
+        task.setReminder(reminder);
+        return taskMapper.mapToTaskResponse(taskRepository.save(task));
+    }
+
     @Transactional
     public void deleteTask(String taskId) {
         if (taskRepository.deleteByIdAndCreatorId(taskId, authService.getCurrentUser().getId()) == 0)

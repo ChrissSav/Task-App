@@ -6,6 +6,7 @@ import com.example.Task.dto.task.AddTaskRequest;
 import com.example.Task.dto.task.TaskResponse;
 import com.example.Task.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,6 +21,7 @@ public class TaskController {
 
 
     @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
     public BaseResponse<TaskResponse> registerTask(@Valid @RequestBody AddTaskRequest addTaskRequest) {
         TaskResponse task = taskService.addTaskToUser(addTaskRequest);
         BaseResponse<TaskResponse> baseResponse = new BaseResponse<>();
@@ -32,6 +34,15 @@ public class TaskController {
         List<TaskResponse> tasks = taskService.usersTasks();
         BaseResponse<List<TaskResponse>> baseResponse = new BaseResponse<>();
         baseResponse.setData(tasks);
+        return baseResponse;
+    }
+
+    @PutMapping("")
+    public BaseResponse<TaskResponse> updateTask(@Valid @RequestParam("task_id") String taskId,
+                                                 @Valid @RequestParam("reminder") boolean reminder) {
+        TaskResponse task = taskService.updateTask(taskId, reminder);
+        BaseResponse<TaskResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setData(task);
         return baseResponse;
     }
 
