@@ -20,9 +20,10 @@ public class Task {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String text;
-    private String day;
-
+    private Long timestamp;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(fetch = LAZY)
     private User creator;
+    private boolean reminder = false;
+
 }
