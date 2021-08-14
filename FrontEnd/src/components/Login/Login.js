@@ -1,20 +1,39 @@
 import React, { useState } from 'react';
 import axiosApp from '../../axiosApp';
+import Alert from '@material-ui/lab/Alert';
+import AlertTitle from '@material-ui/lab/AlertTitle';
+import Statics from '../Util/Statics';
+import cookie from 'react-cookies';
 
 const Login = ({}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('firstNadme@gmail.com');
+  const [errorText, setErrorText] = useState('');
+  const [password, setPassword] = useState('firstName');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('roijgiurgrg');
-
-    if (password && email) {
-      axiosApp.post('/login', {
-        username: email,
+    setErrorText('');
+    axiosApp
+      .post('/login', {
+        email: email,
         password: password,
-      });
-    }
+      })
+      .then(
+        ({ data }) => {
+          setErrorText('');
+          console.log(data);
+          cookie.save(Statics.ACCESS_TOKEN, data.data.accessToken, {
+            path: '/',
+          });
+          cookie.save(Statics.REFRESH_TOKEN, data.data.refreshToken, {
+            path: '/',
+          });
+          window.location.href = '/';
+        },
+        (error) => {
+          setErrorText(error.response.data.error);
+        }
+      );
 
     //window.location.href = '/';
     //history.push('/');
@@ -22,14 +41,29 @@ const Login = ({}) => {
 
   return (
     <div className='vertical-center'>
+      {errorText.length > 0 ? (
+        <Alert severity='error'>
+          <AlertTitle>Error</AlertTitle>
+          <strong>{errorText}</strong>
+        </Alert>
+      ) : (
+        ''
+      )}
+
       <form
-        style={{ width: '40%', margin: 'auto', height: '100%' }}
+        style={{
+          width: '40%',
+          margin: 'auto',
+          height: '100%',
+          paddingTop: '100px',
+        }}
         onSubmit={onSubmit}
       >
         <div className='form-control'>
           <label>UserName</label>
           <input
-            type='text'
+            type='email'
+            required='required'
             placeholder='UserName'
             value={email}
             onChange={(e) => {
@@ -43,6 +77,7 @@ const Login = ({}) => {
             type='password'
             placeholder='password'
             value={password}
+            required='required'
             onChange={(e) => {
               setPassword(e.target.value);
             }}

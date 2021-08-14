@@ -4,6 +4,8 @@ import Tasks from '../components/Task/Tasks';
 
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Statics from './Util/Statics';
+import cookie from 'react-cookies';
 
 const Main = () => {
   const history = useHistory();
@@ -31,7 +33,7 @@ const Main = () => {
   ]);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = cookie.load(Statics.ACCESS_TOKEN);
     if (!token) {
       history.push('/login');
     }
@@ -40,8 +42,6 @@ const Main = () => {
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
-
-  // Add Task
 
   // Add Task
   const addTask = (task) => {

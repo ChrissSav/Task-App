@@ -26,13 +26,15 @@ function refreshToken() {
 axiosApp.interceptors.request.use(
   (config) => {
     const token = getLocalAccessToken();
-    console.log(config);
     if (token) {
+      console.log('axiosApp.interceptors.request config');
+
       config.headers['x-access-token'] = token;
     }
     return config;
   },
   (error) => {
+    console.log('axiosApp.interceptors.request config  error');
     return Promise.reject(error);
   }
 );
@@ -43,8 +45,7 @@ axiosApp.interceptors.response.use(
   },
   async (err) => {
     const originalConfig = err.config;
-
-    if (err.response) {
+    if (err.response && err.config.url != 'login') {
       // Access Token was expired
       if (err.response.status === 401 && !originalConfig._retry) {
         originalConfig._retry = true;
