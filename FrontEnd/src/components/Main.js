@@ -1,16 +1,13 @@
-import AddTask from './Task/AddTask';
+import AddTask from './task/AddTask';
 import Header from '../components/Header';
-import Tasks from '../components/Task/Tasks';
+import Tasks from './task/Tasks';
 
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import Statics from './Util/Statics';
 import cookie from 'react-cookies';
 
 const Main = () => {
-  const history = useHistory();
-
-  const [shpwAddTask, setShowAddTask] = useState(false);
+  const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -35,9 +32,9 @@ const Main = () => {
   useEffect(() => {
     const token = cookie.load(Statics.ACCESS_TOKEN);
     if (!token) {
-      history.push('/login');
+      window.location.href = '/login';
     }
-  });
+  }, []);
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
@@ -70,10 +67,10 @@ const Main = () => {
   return (
     <div className='contadiner'>
       <Header
-        onAdd={() => setShowAddTask(!shpwAddTask)}
-        showAdd={shpwAddTask}
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
       />
-      {shpwAddTask && <AddTask onAdd={addTask} />}
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (

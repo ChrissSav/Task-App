@@ -10,6 +10,7 @@ public abstract class ExceptionCodes {
     public static final String REFRESH_TOKEN_NOT_VALID = "REFRESH_TOKEN_NOT_VALID";
     public static final String TIMESTAMP_INCORRECT = "TIMESTAMP_INCORRECT";
     public static final String TASK_NOT_FOUND = "TASK_NOT_FOUND";
+    public static final String EMAIL_ALREADY_EXIST = "EMAIL_ALREADY_EXIST";
 
 
 }

@@ -43,7 +43,7 @@ public class AuthService {
         Optional<User> userOptional = userRepository.findByEmail(registerRequest.getEmail());
 
         if (userOptional.isPresent()) {
-            throw new UsernameNotFoundException("jpijopioiuouo");
+            throw new ConflictException(ExceptionCodes.EMAIL_ALREADY_EXIST);
         }
 
         User user = new User();

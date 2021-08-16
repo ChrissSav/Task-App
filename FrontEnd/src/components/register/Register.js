@@ -1,23 +1,36 @@
-import React, { useState } from 'react';
-import axiosApp from '../Util/axiosApp';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Header from '../Header';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
-import Statics from '../Util/Statics';
+import axiosApp from '../Util/axiosApp';
 import cookie from 'react-cookies';
-import Header from '../Header';
+import Statics from '../Util/Statics';
 
-const Login = () => {
+const Register = (props) => {
+  const [firstName, setFirstName] = useState('setFirstName');
+  const [lastName, setLastName] = useState('setLastName');
   const [email, setEmail] = useState('firstNadme@gmail.com');
-  const [errorText, setErrorText] = useState('');
   const [password, setPassword] = useState('firstName');
+  const [errorText, setErrorText] = useState('');
+
+  useEffect(() => {
+    const token = cookie.load(Statics.ACCESS_TOKEN);
+    if (token) {
+      window.location.href = '/';
+    }
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
     setErrorText('');
+
     axiosApp
-      .post('/login', {
-        email: email,
-        password: password,
+      .post('/register', {
+        firstName,
+        lastName,
+        email,
+        password,
       })
       .then(
         ({ data }) => {
@@ -38,9 +51,8 @@ const Login = () => {
   };
 
   return (
-    <div className='vertical-center'>
+    <div>
       <Header title='Task App' />
-
       {errorText.length > 0 ? (
         <Alert severity='error'>
           <AlertTitle>Error</AlertTitle>
@@ -49,7 +61,6 @@ const Login = () => {
       ) : (
         ''
       )}
-
       <form
         style={{
           width: '40%',
@@ -60,11 +71,35 @@ const Login = () => {
         onSubmit={onSubmit}
       >
         <div className='form-control'>
+          <label>First name</label>
+          <input
+            type='text'
+            placeholder='first name'
+            value={firstName}
+            required='required'
+            onChange={(e) => {
+              setFirstName(e.target.value);
+            }}
+          />
+        </div>
+        <div className='form-control'>
+          <label>Last name</label>
+          <input
+            type='text'
+            placeholder='last name'
+            value={lastName}
+            required='required'
+            onChange={(e) => {
+              setLastName(e.target.value);
+            }}
+          />
+        </div>
+        <div className='form-control'>
           <label>Email</label>
           <input
             type='email'
             required='required'
-            placeholder='UserName'
+            placeholder='email'
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -86,7 +121,7 @@ const Login = () => {
 
         <input
           type='submit'
-          value='Login'
+          value='Register'
           className='btn btn-block'
           style={{ background: 'green' }}
         />
@@ -95,4 +130,6 @@ const Login = () => {
   );
 };
 
-export default Login;
+Register.propTypes = {};
+
+export default Register;
