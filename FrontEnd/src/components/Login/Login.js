@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axiosApp from '../Util/axiosApp';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
@@ -10,6 +10,13 @@ const Login = () => {
   const [email, setEmail] = useState('firstNadme@gmail.com');
   const [errorText, setErrorText] = useState('');
   const [password, setPassword] = useState('firstName');
+
+  useEffect(() => {
+    const token = cookie.load(Statics.REFRESH_TOKEN);
+    if (token) {
+      window.location.href = '/';
+    }
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();

@@ -5,35 +5,23 @@ import Tasks from './task/Tasks';
 import { useState, useEffect } from 'react';
 import Statics from './Util/Statics';
 import cookie from 'react-cookies';
+import axiosApp from './Util/axiosApp';
 
 const Main = () => {
   const [showAddTask, setShowAddTask] = useState(false);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Doctors Appointment',
-      day: 'Feb 5th at 2:30pm',
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: 'Meeting at School',
-      day: 'Feb 6th at 1:30pm',
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: 'Food Shopping',
-      day: 'Feb 5th at 2:30pm',
-      reminder: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const token = cookie.load(Statics.ACCESS_TOKEN);
+    const token = cookie.load(Statics.REFRESH_TOKEN);
     if (!token) {
       window.location.href = '/login';
     }
+
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    };
+    getTasks();
   }, []);
 
   const deleteTask = (id) => {
@@ -64,6 +52,13 @@ const Main = () => {
     );
   };
 
+  // Fetch Tasks
+  const fetchTasks = async () => {
+    const res = await axiosApp.get('/task');
+    const data = await res.data;
+    return data.data;
+  };
+
   return (
     <div className='contadiner'>
       <Header
@@ -79,5 +74,8 @@ const Main = () => {
     </div>
   );
 };
+
+//access-control-allow-credentials: true
+//access-control-allow-origin: http://localhost:3000
 
 export default Main;

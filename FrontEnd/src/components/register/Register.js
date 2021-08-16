@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Header from '../Header';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
@@ -15,7 +14,7 @@ const Register = (props) => {
   const [errorText, setErrorText] = useState('');
 
   useEffect(() => {
-    const token = cookie.load(Statics.ACCESS_TOKEN);
+    const token = cookie.load(Statics.REFRESH_TOKEN);
     if (token) {
       window.location.href = '/';
     }
@@ -129,7 +128,5 @@ const Register = (props) => {
     </div>
   );
 };
-
-Register.propTypes = {};
 
 export default Register;

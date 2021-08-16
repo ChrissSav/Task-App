@@ -1,4 +1,5 @@
 import { FaTimes } from 'react-icons/fa';
+import Statics from '../Util/Statics';
 
 const Task = ({ task, onDelete, onToggle }) => {
   return (
@@ -16,7 +17,7 @@ const Task = ({ task, onDelete, onToggle }) => {
           onClick={() => onDelete(task.id)}
         />
       </h3>
-      <p>{task.day}</p>
+      <p>{Statics.getDateFromTimestamp(task.timestamp, 'MMM Do YYYY , h a')}</p>
     </div>
   );
 };
