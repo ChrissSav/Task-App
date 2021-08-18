@@ -1,26 +1,21 @@
-import AddTask from './task/AddTask';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Header from '../components/Header';
+import AddTask from './task/AddTask';
 import Tasks from './task/Tasks';
-
-import { useState, useEffect } from 'react';
-import Statics from './Util/Statics';
-import cookie from 'react-cookies';
 import axiosApp from './Util/axiosApp';
 
 const Main = () => {
   const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const dispatch = useDispatch();
+
+  const getTasks = async () => {
+    const tasksFromServer = await fetchTasks();
+    setTasks(tasksFromServer);
+  };
 
   useEffect(() => {
-    const token = cookie.load(Statics.REFRESH_TOKEN);
-    if (!token) {
-      window.location.href = '/login';
-    }
-
-    const getTasks = async () => {
-      const tasksFromServer = await fetchTasks();
-      setTasks(tasksFromServer);
-    };
     getTasks();
   }, []);
 
@@ -55,8 +50,8 @@ const Main = () => {
   // Fetch Tasks
   const fetchTasks = async () => {
     const res = await axiosApp.get('/task');
-    const data = await res.data;
-    return data.data;
+    const data = await res;
+    return data;
   };
 
   return (
@@ -71,11 +66,15 @@ const Main = () => {
       ) : (
         'No Tasks to Show'
       )}
+      <button
+        onClick={() => {
+          getTasks();
+        }}
+      >
+        rgfregergerg
+      </button>
     </div>
   );
 };
-
-//access-control-allow-credentials: true
-//access-control-allow-origin: http://localhost:3000
 
 export default Main;

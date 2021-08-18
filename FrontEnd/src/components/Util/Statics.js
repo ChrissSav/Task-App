@@ -8,6 +8,14 @@ class Statics {
     var date = new Date(timestamp * 1000);
     return moment(date).format(format);
   }
+
+  static wait(ms) {
+    var start = new Date().getTime();
+    var end = start;
+    while (end < start + ms * 1000) {
+      end = new Date().getTime();
+    }
+  }
 }
 
 export default Statics;

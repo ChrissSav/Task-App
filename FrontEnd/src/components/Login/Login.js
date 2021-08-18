@@ -5,11 +5,14 @@ import AlertTitle from '@material-ui/lab/AlertTitle';
 import Statics from '../Util/Statics';
 import cookie from 'react-cookies';
 import Header from '../Header';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../actions/userLogin';
 
 const Login = () => {
   const [email, setEmail] = useState('firstNadme@gmail.com');
   const [errorText, setErrorText] = useState('');
   const [password, setPassword] = useState('firstName');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = cookie.load(Statics.REFRESH_TOKEN);
@@ -27,15 +30,15 @@ const Login = () => {
         password: password,
       })
       .then(
-        ({ data }) => {
+        (data) => {
           setErrorText('');
-          console.log(data);
-          cookie.save(Statics.ACCESS_TOKEN, data.data.accessToken, {
+          cookie.save(Statics.ACCESS_TOKEN, data.accessToken, {
             path: '/',
           });
-          cookie.save(Statics.REFRESH_TOKEN, data.data.refreshToken, {
+          cookie.save(Statics.REFRESH_TOKEN, data.refreshToken, {
             path: '/',
           });
+          dispatch(userLogin());
           window.location.href = '/';
         },
         (error) => {
