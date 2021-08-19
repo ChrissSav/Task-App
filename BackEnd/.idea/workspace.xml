@@ -3,18 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="07fc1d66-71e2-425b-9070-df7647914b42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/CustomAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/CustomAuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/service/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/dto/task/AddTaskRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/dto/task/AddTaskRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/dto/task/TaskResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/dto/task/TaskResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/service/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FrontEnd/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Login/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Util/axiosApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Util/axiosApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Task/AddTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Task/AddTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Util/StateLoader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Util/Statics.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Util/Statics.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,22 +120,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628851305016" />
-    <state width="1877" height="305" key="GridCell.Tab.0.bottom" timestamp="1629305694594">
+    <state width="1877" height="177" key="GridCell.Tab.0.bottom" timestamp="1629415005780">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="305" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629305694594" />
-    <state width="1877" height="305" key="GridCell.Tab.0.center" timestamp="1629305694594">
+    <state width="1877" height="177" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629415005780" />
+    <state width="1877" height="177" key="GridCell.Tab.0.center" timestamp="1629415005780">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="305" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629305694594" />
-    <state width="1877" height="305" key="GridCell.Tab.0.left" timestamp="1629305694594">
+    <state width="1877" height="177" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629415005780" />
+    <state width="1877" height="177" key="GridCell.Tab.0.left" timestamp="1629415005780">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="305" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629305694594" />
-    <state width="1877" height="305" key="GridCell.Tab.0.right" timestamp="1629305694594">
+    <state width="1877" height="177" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629415005780" />
+    <state width="1877" height="177" key="GridCell.Tab.0.right" timestamp="1629415005780">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="305" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629305694594" />
+    <state width="1877" height="177" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629415005780" />
     <state width="1877" height="305" key="GridCell.Tab.1.bottom" timestamp="1629305694594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -171,10 +172,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="43" y="255" width="607" height="536" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629299834955" />
-    <state x="466" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1629305223425">
+    <state x="466" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1629410841729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="466" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629305223425" />
+    <state x="466" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629410841729" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

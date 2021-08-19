@@ -17,7 +17,9 @@ const Task = ({ task, onDelete, onToggle }) => {
           onClick={() => onDelete(task.id)}
         />
       </h3>
-      <p>{Statics.getDateFromTimestamp(task.timestamp, 'MMM Do YYYY , h a')}</p>
+      <p>
+        {Statics.getDateFromTimestamp(task.timestamp, Statics.TASK_DATE_FORMAT)}
+      </p>
     </div>
   );
 };

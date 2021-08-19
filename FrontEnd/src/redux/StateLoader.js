@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
-import allReducers from '../../reducers';
 import cookie from 'react-cookies';
-import Statics from './Statics';
+import Statics from '../components/Util/Statics';
+import allReducers from './reducers';
 
 const LOCAL_STORAGE_NAME = 'localData';
 

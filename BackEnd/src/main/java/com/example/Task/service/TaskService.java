@@ -37,7 +37,6 @@ public class TaskService {
         newTask.setCreator(authService.getCurrentUser());
         newTask.setTimestamp(addTaskRequest.getTimestamp());
         newTask.setText(addTaskRequest.getText());
-        newTask.setReminder(addTaskRequest.isReminder());
         return taskMapper.mapToTaskResponse(taskRepository.save(newTask));
     }
 
@@ -48,12 +47,12 @@ public class TaskService {
     }
 
 
-    public TaskResponse updateTask(String taskId, boolean reminder) {
-        Task task = taskRepository.findByIdAndCreatorId(taskId, authService.getCurrentUser().getId())
-                .orElseThrow(() -> new ConflictException(ExceptionCodes.TASK_NOT_FOUND));
-        task.setReminder(reminder);
-        return taskMapper.mapToTaskResponse(taskRepository.save(task));
-    }
+//    public TaskResponse updateTask(String taskId, boolean reminder) {
+//        Task task = taskRepository.findByIdAndCreatorId(taskId, authService.getCurrentUser().getId())
+//                .orElseThrow(() -> new ConflictException(ExceptionCodes.TASK_NOT_FOUND));
+//        task.setReminder(reminder);
+//        return taskMapper.mapToTaskResponse(taskRepository.save(task));
+//    }
 
     @Transactional
     public void deleteTask(String taskId) {

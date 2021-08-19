@@ -12,13 +12,16 @@ const Header = ({ title, onAdd, showAdd }) => {
       className='header'
     >
       <h1>{title}</h1>
-      {showAdd && (
-        <Button
-          color={showAdd ? 'red' : 'green'}
-          text={showAdd ? 'Close' : 'Add'}
-          onClick={onAdd}
-        />
-      )}
+      <div className='btn-container'>
+        {showAdd && (
+          <Button
+            color={!showAdd ? 'red' : 'green'}
+            text={!showAdd ? 'Close' : 'Add'}
+            onClick={onAdd}
+          />
+        )}
+        <Button color='#00ccff' text='logout' />
+      </div>
     </header>
   );
 };

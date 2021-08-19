@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Header from '../components/Header';
 import AddTask from './task/AddTask';
 import Tasks from './task/Tasks';
 import axiosApp from './Util/axiosApp';
@@ -8,7 +6,6 @@ import axiosApp from './Util/axiosApp';
 const Main = () => {
   const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([]);
-  const dispatch = useDispatch();
 
   const getTasks = async () => {
     const tasksFromServer = await fetchTasks();
@@ -49,17 +46,15 @@ const Main = () => {
 
   // Fetch Tasks
   const fetchTasks = async () => {
-    const res = await axiosApp.get('/task');
-    const data = await res;
-    return data;
+    return await axiosApp.get('/task');
   };
 
   return (
     <div className='contadiner'>
-      <Header
+      {/* <Header
         onAdd={() => setShowAddTask(!showAddTask)}
         showAdd={showAddTask}
-      />
+      /> */}
       {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />

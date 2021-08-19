@@ -8,7 +8,8 @@ function getLocalAccessToken() {
 }
 
 const axiosApp = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: Statics.API_URL,
+  timeout: 2500,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -18,7 +19,7 @@ axiosApp.interceptors.request.use(
   (config) => {
     const token = getLocalAccessToken();
     if (token) {
-      console.log('Add Access Token to Header');
+      //console.log('Add Access Token to Header');
       config.headers['Authorization'] = 'Bearer ' + token;
     }
     //console.log(config);

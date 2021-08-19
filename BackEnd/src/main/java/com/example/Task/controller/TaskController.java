@@ -4,6 +4,8 @@ package com.example.Task.controller;
 import com.example.Task.dto.BaseResponse;
 import com.example.Task.dto.task.AddTaskRequest;
 import com.example.Task.dto.task.TaskResponse;
+import com.example.Task.exceptions.ConflictException;
+import com.example.Task.exceptions.ExceptionCodes;
 import com.example.Task.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -37,14 +39,16 @@ public class TaskController {
         return baseResponse;
     }
 
-    @PutMapping("")
-    public BaseResponse<TaskResponse> updateTask(@Valid @RequestParam("task_id") String taskId,
-                                                 @Valid @RequestParam("reminder") boolean reminder) {
-        TaskResponse task = taskService.updateTask(taskId, reminder);
-        BaseResponse<TaskResponse> baseResponse = new BaseResponse<>();
-        baseResponse.setData(task);
-        return baseResponse;
-    }
+    //throw new ConflictException(ExceptionCodes.TASK_NOT_FOUND);
+
+//    @PutMapping("")
+//    public BaseResponse<TaskResponse> updateTask(@Valid @RequestParam("task_id") String taskId,
+//                                                 @Valid @RequestParam("reminder") boolean reminder) {
+//        TaskResponse task = taskService.updateTask(taskId, reminder);
+//        BaseResponse<TaskResponse> baseResponse = new BaseResponse<>();
+//        baseResponse.setData(task);
+//        return baseResponse;
+//    }
 
     @DeleteMapping("/{task_id}")
     public BaseResponse<String> deleteTask(@Valid @PathVariable("task_id") String taskId) {

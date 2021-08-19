@@ -4,9 +4,8 @@ import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import Statics from '../Util/Statics';
 import cookie from 'react-cookies';
-import Header from '../Header';
 import { useDispatch } from 'react-redux';
-import { userLogin } from '../../actions/userLogin';
+import { userLogin } from '../../redux/actions/userLogin';
 
 const Login = () => {
   const [email, setEmail] = useState('firstNadme@gmail.com');
@@ -29,27 +28,22 @@ const Login = () => {
         email: email,
         password: password,
       })
-      .then(
-        (data) => {
-          setErrorText('');
-          cookie.save(Statics.ACCESS_TOKEN, data.accessToken, {
-            path: '/',
-          });
-          cookie.save(Statics.REFRESH_TOKEN, data.refreshToken, {
-            path: '/',
-          });
-          dispatch(userLogin());
-          window.location.href = '/';
-        },
-        (error) => {
-          setErrorText(error.response.data.error);
-        }
-      );
+      .then((data) => {
+        setErrorText('');
+        cookie.save(Statics.ACCESS_TOKEN, data.accessToken, {
+          path: '/',
+        });
+        cookie.save(Statics.REFRESH_TOKEN, data.refreshToken, {
+          path: '/',
+        });
+        dispatch(userLogin());
+        window.location.href = '/';
+      });
   };
 
   return (
     <div className='vertical-center'>
-      <Header title='Task App' />
+      {/* // <Header title='Task App' /> */}
 
       {errorText.length > 0 ? (
         <Alert severity='error'>

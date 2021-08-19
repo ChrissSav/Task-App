@@ -31,22 +31,17 @@ const Register = (props) => {
         email,
         password,
       })
-      .then(
-        ({ data }) => {
-          setErrorText('');
-          console.log(data);
-          cookie.save(Statics.ACCESS_TOKEN, data.data.accessToken, {
-            path: '/',
-          });
-          cookie.save(Statics.REFRESH_TOKEN, data.data.refreshToken, {
-            path: '/',
-          });
-          window.location.href = '/';
-        },
-        (error) => {
-          setErrorText(error.response.data.error);
-        }
-      );
+      .then(({ data }) => {
+        setErrorText('');
+        console.log(data);
+        cookie.save(Statics.ACCESS_TOKEN, data.data.accessToken, {
+          path: '/',
+        });
+        cookie.save(Statics.REFRESH_TOKEN, data.data.refreshToken, {
+          path: '/',
+        });
+        window.location.href = '/';
+      });
   };
 
   return (

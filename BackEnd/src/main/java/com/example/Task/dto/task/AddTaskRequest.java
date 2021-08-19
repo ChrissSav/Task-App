@@ -18,5 +18,4 @@ public class AddTaskRequest {
     private String text;
     @NotNull
     private Long timestamp;
-    private boolean reminder = false;
 }

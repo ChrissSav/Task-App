@@ -24,6 +24,5 @@ public class Task {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(fetch = LAZY)
     private User creator;
-    private boolean reminder = false;
 
 }

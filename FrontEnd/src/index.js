@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import axiosApp from './components/Util/axiosApp';
 import Statics from './components/Util/Statics';
-import { userLogout } from './actions/userLogout';
-import PersistedStore from './components/Util/StateLoader';
+import PersistedStore from './redux/StateLoader';
 import cookie from 'react-cookies';
-import { userLogin } from './actions/userLogin';
+import { userLogin } from './redux/actions/userLogin';
+import { setErrorText } from './redux/actions/setErrorText';
 
 const store = PersistedStore.getDefaultStore().store;
+const { dispatch } = store;
 
 ReactDOM.render(
   <Provider store={store}>
@@ -22,19 +22,16 @@ ReactDOM.render(
 
 axiosApp.interceptors.response.use(
   (res) => {
+    dispatch({ type: 'DELETE_ERROR' });
     return res.data.data;
   },
   async (err) => {
     console.log('axiosApp.interceptors.response.use(');
     const originalConfig = err.config;
-    if (
-      err.response &&
-      err.config.url !== 'login' &&
-      err.config.url !== 'register'
-    ) {
-      // Access Token was expired
-      console.log('Access Token was expired');
+    // Access Token was expired
+    try {
       if (err.response.status === 403 && !originalConfig._retry) {
+        console.log('Access Token was expired');
         originalConfig._retry = true;
         try {
           const response = await refreshTokenApi();
@@ -55,18 +52,19 @@ axiosApp.interceptors.response.use(
           userLogOut(2);
           return Promise.reject(_error);
         }
+      } else {
+        dispatch(setErrorText(err.response.data.error));
+        console.log(err.response.data.error);
       }
-      if (err.response.status === 403 && err.response.data) {
-        userLogOut(3);
-        return Promise.reject(err.response.data);
-      }
+    } catch (e) {
+      dispatch(setErrorText(Statics.ERROR_API_UNREACHABLE));
     }
+
     return Promise.reject(err);
   }
 );
 
 function userLogOut(str) {
-  const { dispatch } = store;
   dispatch(userLogin());
 }
 
@@ -80,8 +78,3 @@ function refreshTokenApi() {
     refreshToken: getLocalRefreshToken(),
   });
 }
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

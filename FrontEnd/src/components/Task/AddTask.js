@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import Statics from '../Util/Statics';
 
 const AddTask = ({ onAdd }) => {
   const [text, setText] = useState('');
-  const [day, setDay] = useState('');
-  const [reminder, setReminder] = useState(false);
+  const [date, setDate] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -12,41 +12,41 @@ const AddTask = ({ onAdd }) => {
       alert('Please add a task');
       return;
     }
-
-    onAdd({ text, day, reminder });
-
+    onAdd({ text: text, timestamp: Statics.toTimestamp(date) });
     setText('');
-    setDay('');
-    setReminder(false);
+    setDate('');
   };
 
   return (
-    <form className='add-form' onSubmit={onSubmit}>
+    <form
+      className='add-form'
+      onSubmit={onSubmit}
+      style={{ margin: '30px', paddingBottom: '30px' }}
+    >
       <div className='form-control'>
         <label>Task</label>
         <input
           type='text'
           placeholder='Add Task'
           value={text}
+          required
           onChange={(e) => setText(e.target.value)}
         />
       </div>
       <div className='form-control'>
         <label>Day & Time</label>
         <input
-          type='text'
+          type='date'
           placeholder='Add Day & Time'
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
-        />
-      </div>
-      <div className='form-control form-control-check'>
-        <label>Set Reminder</label>
-        <input
-          type='checkbox'
-          checked={reminder}
-          value={reminder}
-          onChange={(e) => setReminder(e.currentTarget.checked)}
+          value={date}
+          required
+          onChange={(e) => {
+            // const date = moment(
+            //   e.target.value,
+            //   Statics.TASK_DATE_FORMAT
+            // ).format(Statics.TASK_DATE_FORMAT);
+            setDate(e.target.value);
+          }}
         />
       </div>
 
