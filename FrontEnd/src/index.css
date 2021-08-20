@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: inherit;
 }
 
 body {
@@ -71,8 +72,16 @@ body {
   justify-content: space-between;
 }
 
+.add-form-div {
+  display: block;
+  text-align: center;
+}
 .add-form {
+  display: inline-block;
   margin-bottom: 40px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-control {

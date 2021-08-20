@@ -53,9 +53,10 @@ function App() {
   }, [errorText]);
 
   const addTask = (task) => {
-    console.log(task);
-    setShowAddTask(false);
-    axiosApp.post('/task', task).then(() => {});
+    axiosApp.post('/task', task).then(() => {
+      dispatch({ type: 'RELOAD_TASKS' });
+      setShowAddTask(false);
+    });
   };
 
   return (
@@ -77,7 +78,7 @@ function App() {
         }}
       />
       <Collapse in={showAddTask}>
-        <AddTask onAdd={addTask} />
+        <AddTask onAdd={addTask} deleteAll={showAddTask} />
       </Collapse>
 
       <Route exact path='/' component={Main} />

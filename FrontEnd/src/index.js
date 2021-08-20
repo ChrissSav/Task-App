@@ -56,7 +56,7 @@ axiosApp.interceptors.response.use(
         dispatch(setErrorText(`#${Math.random()}`));
         dispatch(setErrorText(err.response.data.error));
 
-        // console.log(err.response.data.error);
+        console.log(err.response.data.error);
       }
     } catch (e) {
       dispatch(setErrorText(`#${Math.random()}`));

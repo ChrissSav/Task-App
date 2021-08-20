@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Tasks from './task/Tasks';
 import axiosApp from './Util/axiosApp';
 
 const Main = () => {
   const [tasks, setTasks] = useState([]);
+  const reloadTasks = useSelector((state) => state.reloadTasks);
 
   const getTasks = async () => {
     const tasksFromServer = await fetchTasks();
@@ -12,7 +14,7 @@ const Main = () => {
 
   useEffect(() => {
     getTasks();
-  }, []);
+  }, [reloadTasks]);
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
