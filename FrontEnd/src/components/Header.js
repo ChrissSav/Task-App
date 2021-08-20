@@ -1,38 +1,41 @@
 import PropTypes from 'prop-types';
 import Button from './Button';
 
-const Header = ({ title, onAdd, showAdd }) => {
+const Header = ({ showButtons, onAddClick, onLogoutClick, isOpen }) => {
   return (
     <header
       style={{
+        minHeight: '100px',
         padding: '20px 20px',
         borderBottomStyle: 'solid',
         borderBottomColor: 'blue',
       }}
       className='header'
     >
-      <h1>{title}</h1>
+      <h1>Task Tracker</h1>
       <div className='btn-container'>
-        {showAdd && (
+        {showButtons && (
           <Button
-            color={!showAdd ? 'red' : 'green'}
-            text={!showAdd ? 'Close' : 'Add'}
-            onClick={onAdd}
+            color={isOpen ? 'red' : 'green'}
+            text={isOpen ? 'Close' : 'Add'}
+            onClick={onAddClick}
           />
         )}
-        <Button color='#00ccff' text='logout' />
+        {showButtons && (
+          <Button color='#00ccff' text='logout' onClick={onLogoutClick} />
+        )}
       </div>
     </header>
   );
 };
 
-Header.defaultProps = {
-  title: 'Task Tracker',
-  showAdd: false,
-};
+// Header.defaultProps = {
+//   title: 'Task Tracker',
+//   showAdd: false,
+// };
 
-Header.protoTypes = {
-  title: PropTypes.string.isRequired,
-};
+// Header.protoTypes = {
+//   title: PropTypes.string.isRequired,
+// };
 
 export default Header;

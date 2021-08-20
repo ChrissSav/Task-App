@@ -53,10 +53,13 @@ axiosApp.interceptors.response.use(
           return Promise.reject(_error);
         }
       } else {
+        dispatch(setErrorText(`#${Math.random()}`));
         dispatch(setErrorText(err.response.data.error));
-        console.log(err.response.data.error);
+
+        // console.log(err.response.data.error);
       }
     } catch (e) {
+      dispatch(setErrorText(`#${Math.random()}`));
       dispatch(setErrorText(Statics.ERROR_API_UNREACHABLE));
     }
 

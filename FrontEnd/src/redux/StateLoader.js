@@ -30,6 +30,7 @@ class PersistedStore {
   // Initialization of Redux Store
   initStore() {
     const current = PersistedStore.loadState();
+    console.log(current);
     this._store = createStore(
       allReducers,
       current,
@@ -37,6 +38,7 @@ class PersistedStore {
         window.__REDUX_DEVTOOLS_EXTENSION__()
     );
     this._store.subscribe(() => {
+      console.log('subscribe');
       PersistedStore.saveState(this._store.getState());
     });
   }
@@ -59,9 +61,11 @@ class PersistedStore {
     try {
       let serializedState = localStorage.getItem(LOCAL_STORAGE_NAME);
       if (serializedState === null) {
-        return PersistedStore.initialState();
+        console.log('serializedState === null');
+        const newState = PersistedStore.initialState();
+        this.saveState(newState);
+        return newState;
       }
-
       return JSON.parse(serializedState);
     } catch (err) {
       return PersistedStore.initialState();
@@ -80,7 +84,7 @@ class PersistedStore {
 
   // Return whatever you want your initial state to be
   static initialState() {
-    return {};
+    return { isLogged: false, errorText: '' };
   }
 }
 
