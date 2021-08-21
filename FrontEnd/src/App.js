@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Login from './components/login/Login';
 import Main from './components/Main';
@@ -33,23 +33,16 @@ function App() {
     setOpenDialog(false);
   };
 
+  // set delay because the collapse is lagging on open
   useEffect(() => {
-    ///console.log('user logout useEffect(() isLogged' + isLogged);
-    if (isLogged === false) {
-      // console.log('user logout now');
-      if (!window.location.href.includes('/login')) {
-        window.location.href = '/login';
+    window.setTimeout(() => {
+      if (errorText.length > 0) {
+        setOpen(true);
+        window.setTimeout(() => {
+          setOpen(false);
+        }, 3000);
       }
-    }
-  }, [isLogged]);
-
-  useEffect(() => {
-    if (errorText.length > 0) {
-      setOpen(true);
-      window.setTimeout(() => {
-        setOpen(false);
-      }, 3000);
-    }
+    }, 300);
   }, [errorText]);
 
   const addTask = (task) => {
@@ -61,7 +54,12 @@ function App() {
 
   return (
     <Router>
-      <Collapse in={open}>
+      <Collapse
+        in={open}
+        onClick={() => {
+          setOpen(false);
+        }}
+      >
         <Alert severity='error'>
           <AlertTitle>Error</AlertTitle>
           <strong>{errorText}</strong>
@@ -81,7 +79,11 @@ function App() {
         <AddTask onAdd={addTask} deleteAll={showAddTask} />
       </Collapse>
 
-      <Route exact path='/' component={Main} />
+      <Route
+        exact
+        path='/'
+        render={() => (isLogged ? <Main /> : <Redirect to='/login' />)}
+      />
       <Route exact path='/login' component={Login} />
       <Route exact path='/register' component={Register} />
 

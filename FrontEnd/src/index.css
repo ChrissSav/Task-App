@@ -119,3 +119,24 @@ footer {
   margin-top: 30px;
   text-align: center;
 }
+
+.center {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

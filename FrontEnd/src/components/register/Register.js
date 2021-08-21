@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../Header';
-import Alert from '@material-ui/lab/Alert';
-import AlertTitle from '@material-ui/lab/AlertTitle';
-import axiosApp from '../Util/axiosApp';
+import React, { useEffect, useState } from 'react';
 import cookie from 'react-cookies';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../redux/actions/userLogin';
+import axiosApp from '../Util/axiosApp';
 import Statics from '../Util/Statics';
 
-const Register = (props) => {
+const Register = () => {
   const [firstName, setFirstName] = useState('setFirstName');
   const [lastName, setLastName] = useState('setLastName');
   const [email, setEmail] = useState('firstNadme@gmail.com');
   const [password, setPassword] = useState('firstName');
-  const [errorText, setErrorText] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = cookie.load(Statics.REFRESH_TOKEN);
@@ -22,8 +21,6 @@ const Register = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setErrorText('');
-
     axiosApp
       .post('/register', {
         firstName,
@@ -31,33 +28,24 @@ const Register = (props) => {
         email,
         password,
       })
-      .then(({ data }) => {
-        setErrorText('');
-        console.log(data);
-        cookie.save(Statics.ACCESS_TOKEN, data.data.accessToken, {
+      .then((data) => {
+        //console.log(data);
+        cookie.save(Statics.ACCESS_TOKEN, data.accessToken, {
           path: '/',
         });
-        cookie.save(Statics.REFRESH_TOKEN, data.data.refreshToken, {
+        cookie.save(Statics.REFRESH_TOKEN, data.refreshToken, {
           path: '/',
         });
+        dispatch(userLogin());
         window.location.href = '/';
       });
   };
 
   return (
     <div>
-      <Header title='Task App' />
-      {errorText.length > 0 ? (
-        <Alert severity='error'>
-          <AlertTitle>Error</AlertTitle>
-          <strong>{errorText}</strong>
-        </Alert>
-      ) : (
-        ''
-      )}
       <form
         style={{
-          width: '40%',
+          width: '80%',
           margin: 'auto',
           height: '100%',
           paddingTop: '100px',
@@ -70,7 +58,7 @@ const Register = (props) => {
             type='text'
             placeholder='first name'
             value={firstName}
-            required='required'
+            required
             onChange={(e) => {
               setFirstName(e.target.value);
             }}
@@ -82,7 +70,7 @@ const Register = (props) => {
             type='text'
             placeholder='last name'
             value={lastName}
-            required='required'
+            required
             onChange={(e) => {
               setLastName(e.target.value);
             }}
@@ -92,7 +80,7 @@ const Register = (props) => {
           <label>Email</label>
           <input
             type='email'
-            required='required'
+            required
             placeholder='email'
             value={email}
             onChange={(e) => {
@@ -106,7 +94,7 @@ const Register = (props) => {
             type='password'
             placeholder='password'
             value={password}
-            required='required'
+            required
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -120,6 +108,15 @@ const Register = (props) => {
           style={{ background: 'green' }}
         />
       </form>
+      <div className='center'>
+        <h3>
+          If you have an account.
+          <i>
+            {' '}
+            <a href='/login'>Login now.</a>{' '}
+          </i>{' '}
+        </h3>
+      </div>
     </div>
   );
 };

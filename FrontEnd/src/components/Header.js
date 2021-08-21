@@ -12,7 +12,15 @@ const Header = ({ showButtons, onAddClick, onLogoutClick, isOpen }) => {
       }}
       className='header'
     >
-      <h1>Task Tracker</h1>
+      <h1
+        className='unselectable'
+        style={{ cursor: 'pointer' }}
+        onClick={() => {
+          window.location.href = '/';
+        }}
+      >
+        Task Tracker
+      </h1>
       <div className='btn-container'>
         {showButtons && (
           <Button

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axiosApp from '../Util/axiosApp';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
-import Statics from '../Util/Statics';
+import React, { useEffect, useState } from 'react';
 import cookie from 'react-cookies';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/actions/userLogin';
+import axiosApp from '../Util/axiosApp';
+import Statics from '../Util/Statics';
 
 const Login = () => {
   const [email, setEmail] = useState('firstNadme@gmail.com');
@@ -42,9 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div className='vertical-center'>
-      {/* // <Header title='Task App' /> */}
-
+    <div>
       {errorText.length > 0 ? (
         <Alert severity='error'>
           <AlertTitle>Error</AlertTitle>
@@ -95,6 +93,16 @@ const Login = () => {
           style={{ background: 'green' }}
         />
       </form>
+
+      <div className='center'>
+        <h3>
+          If you don't have an account.
+          <i>
+            {' '}
+            <a href='/register'>Register now.</a>{' '}
+          </i>{' '}
+        </h3>
+      </div>
     </div>
   );
 };
