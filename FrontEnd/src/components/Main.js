@@ -26,10 +26,17 @@ const Main = () => {
   };
 
   // Toggle Reminder
-  const toggleReminder = (id) => {
+  const toggleReminder = async (task_id, reminder) => {
+    const newTask = await axiosApp.put('/task', null, {
+      params: {
+        task_id,
+        reminder: !reminder,
+      },
+    });
+
     setTasks(
       tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
+        task.id === task_id ? { ...task, reminder: newTask.reminder } : task
       )
     );
   };

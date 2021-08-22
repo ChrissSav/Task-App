@@ -18,4 +18,7 @@ public class AddTaskRequest {
     private String text;
     @NotNull
     private Long timestamp;
+    @NotNull
+    private boolean reminder;
+
 }

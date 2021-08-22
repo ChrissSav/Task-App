@@ -39,16 +39,15 @@ public class TaskController {
         return baseResponse;
     }
 
-    //throw new ConflictException(ExceptionCodes.TASK_NOT_FOUND);
 
-//    @PutMapping("")
-//    public BaseResponse<TaskResponse> updateTask(@Valid @RequestParam("task_id") String taskId,
-//                                                 @Valid @RequestParam("reminder") boolean reminder) {
-//        TaskResponse task = taskService.updateTask(taskId, reminder);
-//        BaseResponse<TaskResponse> baseResponse = new BaseResponse<>();
-//        baseResponse.setData(task);
-//        return baseResponse;
-//    }
+    @PutMapping("")
+    public BaseResponse<TaskResponse> updateTask(@Valid @RequestParam("task_id") String taskId,
+                                                 @Valid @RequestParam("reminder") boolean reminder) {
+        TaskResponse task = taskService.updateTask(taskId, reminder);
+        BaseResponse<TaskResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setData(task);
+        return baseResponse;
+    }
 
     @DeleteMapping("/{task_id}")
     public BaseResponse<String> deleteTask(@Valid @PathVariable("task_id") String taskId) {

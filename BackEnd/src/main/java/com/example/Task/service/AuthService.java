@@ -23,6 +23,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.*;
 
 import java.util.Date;
 import java.util.Optional;
@@ -31,6 +32,11 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class AuthService {
+
+    @Value("${JWT_ACCESS_EXPIRATION_TIME}")
+    private int ACCESS_TOKEN;
+    @Value("${JWT_REFRESH_EXPIRATION_TIME}")
+    private int REFRESH_TOKEN;
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -100,7 +106,7 @@ public class AuthService {
         Algorithm algorithm = Algorithm.HMAC256(Statics.REFRESH_TOKEN_SECRET.getBytes());
         return JWT.create()
                 .withSubject(email)
-                .withExpiresAt(new Date(System.currentTimeMillis() + 30 * 60 * 1000)) // 30 minutes
+                .withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN)) // 30 minutes
                 .sign(algorithm);
     }
 
@@ -108,7 +114,7 @@ public class AuthService {
         Algorithm algorithm = Algorithm.HMAC256(Statics.ACCESS_TOKEN_SECRET.getBytes());
         return JWT.create()
                 .withSubject(email)
-                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000)) // 10 minutes
+                .withExpiresAt(new Date(System.currentTimeMillis() + ACCESS_TOKEN)) // 10 minutes
                 .sign(algorithm);
     }
 

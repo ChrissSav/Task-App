@@ -12,4 +12,5 @@ public class TaskResponse {
     private String id;
     private String text;
     private Long timestamp;
+    private boolean reminder;
 }

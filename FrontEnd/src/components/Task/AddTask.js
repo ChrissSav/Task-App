@@ -10,10 +10,15 @@ import TextField from '@material-ui/core/TextField';
 const AddTask = ({ onAdd, deleteAll }) => {
   const [text, setText] = useState('');
   const [date, setDate] = useState(new Date());
+  const [reminder, setReminder] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onAdd({ text: text, timestamp: Statics.toTimestamp(date) });
+    onAdd({
+      text: text,
+      timestamp: Statics.toTimestamp(date),
+      reminder: reminder,
+    });
     setText('');
     setDate('');
   };
@@ -62,6 +67,15 @@ const AddTask = ({ onAdd, deleteAll }) => {
             }}
           />
         </MuiPickersUtilsProvider>
+        <div className='form-control form-control-check'>
+          <label>Set Reminder</label>
+          <input
+            type='checkbox'
+            checked={reminder}
+            value={reminder}
+            onChange={(e) => setReminder(e.currentTarget.checked)}
+          />
+        </div>
         <input
           type='submit'
           value='Save Task'

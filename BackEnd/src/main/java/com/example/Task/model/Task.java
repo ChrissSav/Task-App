@@ -21,6 +21,7 @@ public class Task {
     private String id;
     private String text;
     private Long timestamp;
+    private boolean reminder;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(fetch = LAZY)
     private User creator;
