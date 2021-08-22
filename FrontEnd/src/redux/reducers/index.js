@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
+import addTaskReducer from './addTaskReducer';
 import errorTextReducer from './errorText';
 import loggedReducer from './isLogged';
-import reloadTaskReducer from './reloadTasks';
 
 const allReducers = combineReducers({
   isLogged: loggedReducer,
-  reloadTasks: reloadTaskReducer,
   errorText: errorTextReducer,
+  addTask: addTaskReducer,
 });
 
 export default allReducers;

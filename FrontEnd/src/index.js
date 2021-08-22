@@ -26,7 +26,7 @@ axiosApp.interceptors.response.use(
     return res.data.data;
   },
   async (err) => {
-    console.log('axiosApp.interceptors.response.use(');
+    // console.log('axiosApp.interceptors.response.use(');
     const originalConfig = err.config;
     // Access Token was expired
     try {
@@ -56,7 +56,7 @@ axiosApp.interceptors.response.use(
         dispatch(setErrorText(`#${Math.random()}`));
         dispatch(setErrorText(err.response.data.error));
 
-        console.log(err.response.data.error);
+        // console.log(err.response.data.error);
       }
     } catch (e) {
       dispatch(setErrorText(`#${Math.random()}`));

@@ -17,6 +17,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
+import { setAddTaskAction } from './redux/actions/setAddTask';
 
 function App() {
   const isLogged = useSelector((state) => state.isLogged);
@@ -46,8 +47,8 @@ function App() {
   }, [errorText]);
 
   const addTask = (task) => {
-    axiosApp.post('/task', task).then(() => {
-      dispatch({ type: 'RELOAD_TASKS' });
+    axiosApp.post('/task', task).then((data) => {
+      dispatch(setAddTaskAction(data));
       setShowAddTask(false);
     });
   };
