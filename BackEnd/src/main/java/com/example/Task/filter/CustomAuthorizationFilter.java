@@ -5,15 +5,14 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.Task.dto.BaseResponse;
-import com.example.Task.dto.user.UserResponse;
 import com.example.Task.exceptions.ExceptionCodes;
 import com.example.Task.model.User;
 import com.example.Task.repository.UserRepository;
-import com.example.Task.util.Statics;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -37,9 +36,12 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
  */
 @Slf4j
 @RequiredArgsConstructor
+@Component
 public class CustomAuthorizationFilter extends OncePerRequestFilter {
 
     private final UserRepository userRepository;
+    private final JwtProvider jwtProvider;
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -50,10 +52,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
             if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
                 try {
                     String token = authorizationHeader.substring("Bearer ".length());
-                    Algorithm algorithm = Algorithm.HMAC256(Statics.ACCESS_TOKEN_SECRET.getBytes());
-                    JWTVerifier verifier = JWT.require(algorithm).build();
-                    DecodedJWT decodedJWT = verifier.verify(token);
-                    String username = decodedJWT.getSubject();
+                    String username = jwtProvider.verifyAccessTokenReturnEmail(token);
                     User user = userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("No user " + "Found with username : " + username));
                     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user, null, null);
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);

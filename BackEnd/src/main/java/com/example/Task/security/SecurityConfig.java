@@ -1,6 +1,7 @@
 package com.example.Task.security;
 
 import com.example.Task.filter.CustomAuthorizationFilter;
+import com.example.Task.filter.JwtProvider;
 import com.example.Task.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
+    private final JwtProvider jwtProvider;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -38,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/api/login/**", "/api/token/refresh/**",
                 "/documentation.html", "/api/register/**","/swagger-ui/**","/swagger/**","/v3/api-docs/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
-        http.addFilterBefore(new CustomAuthorizationFilter(userRepository), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new CustomAuthorizationFilter(userRepository,jwtProvider), UsernamePasswordAuthenticationFilter.class);
 
     }
 

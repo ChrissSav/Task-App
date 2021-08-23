@@ -9,6 +9,7 @@ import PersistedStore from './redux/StateLoader';
 import cookie from 'react-cookies';
 import { userLogin } from './redux/actions/userLogin';
 import { setErrorText } from './redux/actions/setErrorText';
+import { userLogout } from './redux/actions/userLogout';
 
 const store = PersistedStore.getDefaultStore().store;
 const { dispatch } = store;
@@ -68,7 +69,7 @@ axiosApp.interceptors.response.use(
 );
 
 function userLogOut(str) {
-  dispatch(userLogin());
+  dispatch(userLogout());
 }
 
 function getLocalRefreshToken() {

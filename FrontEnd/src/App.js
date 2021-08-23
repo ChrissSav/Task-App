@@ -18,6 +18,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { setAddTaskAction } from './redux/actions/setAddTask';
+import { userLogout } from './redux/actions/userLogout';
 
 function App() {
   const isLogged = useSelector((state) => state.isLogged);
@@ -29,7 +30,7 @@ function App() {
 
   const handleClose = (e) => {
     if (e.target.firstChild.data === 'logout') {
-      dispatch(userLogin());
+      dispatch(userLogout());
     }
     setOpenDialog(false);
   };
