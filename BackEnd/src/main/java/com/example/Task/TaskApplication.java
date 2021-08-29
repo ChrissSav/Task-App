@@ -41,16 +41,16 @@ public class TaskApplication {
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }*/
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurerAdapter() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:3000");
-
-//				registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedHeaders("Origin", "Access-Control-Allow-Origin", "Content-Type", "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
-//						"Access-Control-Request-Method", "Access-Control-Request-Headers");
-			}
-		};
-	}
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurerAdapter() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:3000");
+//
+////				registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedHeaders("Origin", "Access-Control-Allow-Origin", "Content-Type", "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
+////						"Access-Control-Request-Method", "Access-Control-Request-Headers");
+//			}
+//		};
+//	}
 }

@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07fc1d66-71e2-425b-9070-df7647914b42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/JwtProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/TaskApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/TaskApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ConflictException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ConflictException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionCodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionCodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionsHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/CustomAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/CustomAuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/util/Statics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +51,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.Task.dto.auth" />
       <recent name="com.example.Task.exceptions" />
+      <recent name="com.example.Task.dto.auth" />
       <recent name="com.example.Task.config" />
     </key>
   </component>
@@ -101,10 +102,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="286" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1629298644818">
+    <state x="286" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1630247816633">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="286" y="233" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629298644818" />
+    <state x="286" y="233" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1630247816633" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1628862018081">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -113,22 +114,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629713859184" />
-    <state width="1877" height="94" key="GridCell.Tab.0.bottom" timestamp="1629715488872">
+    <state width="2838" height="172" key="GridCell.Tab.0.bottom" timestamp="1630248504364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="94" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629715488872" />
-    <state width="1877" height="94" key="GridCell.Tab.0.center" timestamp="1629715488872">
+    <state width="2838" height="172" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1630248504364" />
+    <state width="2838" height="172" key="GridCell.Tab.0.center" timestamp="1630248504364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="94" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629715488872" />
-    <state width="1877" height="94" key="GridCell.Tab.0.left" timestamp="1629715488872">
+    <state width="2838" height="172" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1630248504364" />
+    <state width="2838" height="172" key="GridCell.Tab.0.left" timestamp="1630248504364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="94" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629715488872" />
-    <state width="1877" height="94" key="GridCell.Tab.0.right" timestamp="1629715488872">
+    <state width="2838" height="172" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1630248504364" />
+    <state width="2838" height="172" key="GridCell.Tab.0.right" timestamp="1630248504364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="94" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629715488872" />
+    <state width="2838" height="172" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1630248504364" />
     <state width="1877" height="305" key="GridCell.Tab.1.bottom" timestamp="1629305694594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -145,10 +146,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="305" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629305694594" />
-    <state x="10" y="179" key="Maven.ArtifactSearchDialog" timestamp="1628862758432">
+    <state x="10" y="179" key="Maven.ArtifactSearchDialog" timestamp="1629996304081">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="10" y="179" key="Maven.ArtifactSearchDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628862758432" />
+    <state x="10" y="179" key="Maven.ArtifactSearchDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629996304081" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1628886088631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -165,10 +166,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-967" y="0" width="974" height="1047" key="dock-window-2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629715238829" />
-    <state x="43" y="255" width="607" height="536" key="find.popup" timestamp="1629299834955">
+    <state x="43" y="255" width="607" height="536" key="find.popup" timestamp="1630248000467">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="43" y="255" width="607" height="536" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629299834955" />
+    <state x="43" y="255" width="607" height="536" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1630248000467" />
     <state x="466" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1629713868415">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

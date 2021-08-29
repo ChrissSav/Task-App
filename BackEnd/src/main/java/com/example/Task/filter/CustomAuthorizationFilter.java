@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.example.Task.exceptions.ExceptionsHandler.getExceptionMessage;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
@@ -62,7 +63,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     response.setStatus(FORBIDDEN.value());
                     response.setContentType(APPLICATION_JSON_VALUE);
                     BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-                    baseResponse.setError(ExceptionCodes.ACCESS_DENIED);
+                    baseResponse.setError(getExceptionMessage(ExceptionCodes.ACCESS_DENIED, request));
                     new ObjectMapper().writeValue(response.getOutputStream(), baseResponse);
                 }
             } else {
