@@ -4,6 +4,10 @@ import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/actions/userLogin';
 import axiosApp from '../Util/axiosApp';
 import Statics from '../Util/Statics';
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
+import PasswordField from 'material-ui-password-field';
+import { FormControl } from '@material-ui/core';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('setFirstName');
@@ -43,63 +47,51 @@ const Register = () => {
 
   return (
     <div>
-      <form
-        style={{
-          width: '80%',
-          margin: 'auto',
-          height: '100%',
-          paddingTop: '100px',
-        }}
-        onSubmit={onSubmit}
-      >
-        <div className='form-control'>
-          <label>First name</label>
-          <input
-            type='text'
-            placeholder='first name'
-            value={firstName}
-            required
-            onChange={(e) => {
-              setFirstName(e.target.value);
-            }}
-          />
-        </div>
-        <div className='form-control'>
-          <label>Last name</label>
-          <input
-            type='text'
-            placeholder='last name'
-            value={lastName}
-            required
-            onChange={(e) => {
-              setLastName(e.target.value);
-            }}
-          />
-        </div>
-        <div className='form-control'>
-          <label>Email</label>
-          <input
-            type='email'
-            required
-            placeholder='email'
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-        </div>
-        <div className='form-control'>
-          <label>Password</label>
-          <input
-            type='password'
-            placeholder='password'
+      <form className='login-register-form' onSubmit={onSubmit}>
+        <TextField
+          id='standard-basic'
+          required
+          style={{ width: '100%', marginBottom: '35px' }}
+          label='Firs name'
+          value={firstName}
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
+        />
+        <TextField
+          id='standard-basic'
+          required
+          style={{ width: '100%', marginBottom: '35px' }}
+          label='Last name'
+          value={lastName}
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
+        />
+        <TextField
+          id='standard-basic'
+          required
+          type='email'
+          style={{ width: '100%', marginBottom: '35px' }}
+          label='Last name'
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+
+        <FormControl required style={{ width: '100%', marginBottom: '80px' }}>
+          <InputLabel htmlFor='standard-adornment-password'>
+            Password
+          </InputLabel>
+          <PasswordField
             value={password}
             required
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
-        </div>
+        </FormControl>
 
         <input
           type='submit'

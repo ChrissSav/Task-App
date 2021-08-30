@@ -56,15 +56,7 @@ const Login = () => {
         ''
       )}
 
-      <form
-        style={{
-          width: '40%',
-          margin: 'auto',
-          height: '100%',
-          paddingTop: '100px',
-        }}
-        onSubmit={onSubmit}
-      >
+      <form className='login-register-form' onSubmit={onSubmit}>
         <div>
           <TextField
             id='standard-basic'

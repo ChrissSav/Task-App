@@ -140,3 +140,10 @@ a {
   -ms-user-select: none;
   user-select: none;
 }
+
+.login-register-form {
+  width: 60%;
+  margin: auto;
+  height: 100%;
+  padding-top: 100px;
+}
