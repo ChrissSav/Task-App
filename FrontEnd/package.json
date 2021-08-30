@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "date-fns": "^2.23.0",
+    "material-ui-password-field": "^2.1.2",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
