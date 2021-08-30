@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07fc1d66-71e2-425b-9070-df7647914b42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/TaskApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/TaskApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ConflictException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ConflictException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionCodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionCodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/exceptions/ExceptionsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/CustomAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Task/filter/CustomAuthorizationFilter.java" afterDir="false" />
-    </list>
+    <list default="true" id="07fc1d66-71e2-425b-9070-df7647914b42" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,10 +101,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1628862018081" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1629713859184">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1630324894150">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1629713859184" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1630324894150" />
     <state width="2838" height="172" key="GridCell.Tab.0.bottom" timestamp="1630248504364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

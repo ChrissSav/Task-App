@@ -11,7 +11,6 @@ import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import { Collapse } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { userLogin } from './redux/actions/userLogin';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -37,15 +36,21 @@ function App() {
 
   // set delay because the collapse is lagging on open
   useEffect(() => {
-    window.setTimeout(() => {
-      if (errorText.length > 0) {
-        setOpen(true);
-        window.setTimeout(() => {
-          setOpen(false);
-        }, 3000);
-      }
-    }, 300);
+    if (errorText.length > 1) {
+      setOpen(true);
+      window.setTimeout(() => {
+        setOpen(false);
+      }, 3000);
+    } else {
+      setOpen(false);
+    }
   }, [errorText]);
+
+  useEffect(() => {
+    if (!isLogged) {
+      setShowAddTask(false);
+    }
+  }, [isLogged]);
 
   const addTask = (task) => {
     axiosApp.post('/task', task).then((data) => {
