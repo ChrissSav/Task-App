@@ -11,8 +11,6 @@ import com.example.Task.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.example.Task.exceptions.ExceptionsHandler.getExceptionMessage;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
@@ -63,7 +60,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     response.setStatus(FORBIDDEN.value());
                     response.setContentType(APPLICATION_JSON_VALUE);
                     BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-                    baseResponse.setError(getExceptionMessage(ExceptionCodes.ACCESS_DENIED, request));
+                    baseResponse.setError(ExceptionCodes.ACCESS_DENIED);
                     new ObjectMapper().writeValue(response.getOutputStream(), baseResponse);
                 }
             } else {

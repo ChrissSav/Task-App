@@ -4,8 +4,6 @@ package com.example.Task.controller;
 import com.example.Task.dto.BaseResponse;
 import com.example.Task.dto.task.AddTaskRequest;
 import com.example.Task.dto.task.TaskResponse;
-import com.example.Task.exceptions.ConflictException;
-import com.example.Task.exceptions.ExceptionCodes;
 import com.example.Task.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/task")
+@RequestMapping("/api/tasks")
 @RequiredArgsConstructor
 public class TaskController {
 

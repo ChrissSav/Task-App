@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import cookie from 'react-cookies';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/actions/userLogin';
@@ -16,13 +16,6 @@ const Register = () => {
   const [password, setPassword] = useState('firstName');
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const token = cookie.load(Statics.REFRESH_TOKEN);
-    if (token) {
-      window.location.href = '/';
-    }
-  }, []);
-
   const onSubmit = (e) => {
     e.preventDefault();
     axiosApp
@@ -34,12 +27,7 @@ const Register = () => {
       })
       .then((data) => {
         //console.log(data);
-        cookie.save(Statics.ACCESS_TOKEN, data.accessToken, {
-          path: '/',
-        });
-        cookie.save(Statics.REFRESH_TOKEN, data.refreshToken, {
-          path: '/',
-        });
+        Statics.saveAccessRefreshToken(data.accessToken, data.refreshToken);
         dispatch(userLogin());
         window.location.href = '/';
       });
@@ -78,9 +66,7 @@ const Register = () => {
         />
 
         <FormControl required style={{ width: '100%', marginBottom: '80px' }}>
-          <InputLabel htmlFor='standard-adornment-password'>
-            Password
-          </InputLabel>
+          <InputLabel htmlFor='standard-adornment-password'>Password</InputLabel>
           <PasswordField
             value={password}
             required
@@ -90,12 +76,7 @@ const Register = () => {
           />
         </FormControl>
 
-        <input
-          type='submit'
-          value='Register'
-          className='btn btn-block'
-          style={{ background: 'green' }}
-        />
+        <input type='submit' value='Register' className='btn btn-block' style={{ background: 'green' }} />
       </form>
       <div className='center'>
         <h3>

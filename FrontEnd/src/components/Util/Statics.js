@@ -1,4 +1,6 @@
 import moment from 'moment';
+import cookie from 'react-cookies';
+import jwt_decode from 'jwt-decode';
 
 class Statics {
   static ACCESS_TOKEN = 'ACCESS_TOKEN';
@@ -24,6 +26,17 @@ class Statics {
   static toTimestamp(strDate) {
     var datum = Date.parse(strDate);
     return datum / 1000;
+  }
+
+  static saveAccessRefreshToken(accessToken, refreshToken) {
+    cookie.save(Statics.ACCESS_TOKEN, accessToken, {
+      path: '/',
+      expires: new Date(jwt_decode(accessToken).exp * 1000),
+    });
+    cookie.save(Statics.REFRESH_TOKEN, refreshToken, {
+      path: '/',
+      expires: new Date(jwt_decode(refreshToken).exp * 1000),
+    });
   }
 }
 

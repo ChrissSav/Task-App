@@ -2,18 +2,12 @@ package com.example.Task.exceptions;
 
 import lombok.Data;
 
-@Data
 public class ConflictException extends RuntimeException {
 
-    private String msg;
-    private ExceptionCodes exceptionCode;
 
     public ConflictException() {
     }
 
-    public ConflictException(ExceptionCodes exceptionCode) {
-        this.exceptionCode = exceptionCode;
-    }
 
     public ConflictException(String message) {
         super(message);

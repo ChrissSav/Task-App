@@ -67,16 +67,11 @@ axiosApp.interceptors.response.use(
         originalConfig._retry = true;
         try {
           const response = await refreshTokenApi();
-          cookie.save(Statics.ACCESS_TOKEN, response.accessToken, {
-            path: '/',
-          });
-          cookie.save(Statics.REFRESH_TOKEN, response.refreshToken, {
-            path: '/',
-          });
-          axiosApp.defaults.headers.common['Authorization'] =
-            'Bearer ' + response.accessToken;
+          Statics.saveAccessRefreshToken(response.accessToken, response.refreshToken);
+          axiosApp.defaults.headers.common['Authorization'] = 'Bearer ' + response.accessToken;
           return axiosApp(originalConfig);
         } catch (_error) {
+          console.log(_error);
           if (_error.response && _error.response.data) {
             userLogOut(1);
             return Promise.reject(_error.response.data);

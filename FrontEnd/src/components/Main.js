@@ -8,7 +8,7 @@ const Main = () => {
   const newTask = useSelector((state) => state.addTask);
 
   const getTasks = async () => {
-    const tasksFromServer = await axiosApp.get('/task');
+    const tasksFromServer = await axiosApp.get('/tasks');
     setTasks(tasksFromServer);
   };
 
@@ -21,13 +21,13 @@ const Main = () => {
   }, [newTask]);
 
   const deleteTask = async (id) => {
-    await axiosApp.delete('/task/' + id);
+    await axiosApp.delete('/tasks/' + id);
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
   // Toggle Reminder
   const toggleReminder = async (task_id, reminder) => {
-    const newTask = await axiosApp.put('/task', null, {
+    const newTask = await axiosApp.put('/tasks', null, {
       params: {
         task_id,
         reminder: !reminder,

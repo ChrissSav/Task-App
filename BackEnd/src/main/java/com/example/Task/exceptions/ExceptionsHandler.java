@@ -27,20 +27,20 @@ public class ExceptionsHandler {
     @ExceptionHandler(value = {ConflictException.class})
     @ResponseBody
     @ResponseStatus(HttpStatus.CONFLICT)
-    public BaseResponse<Object> handleApiException(HttpServletRequest request, ConflictException conflictException) {
+    public BaseResponse<Object> handleApiException(ConflictException conflictException) {
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-        baseResponse.setError(getExceptionMessage(conflictException.getExceptionCode(), request));
+        baseResponse.setError(conflictException.getMessage());
         return baseResponse;
     }
 
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     @ResponseBody
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public BaseResponse<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpServletRequest request) {
+    public BaseResponse<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
         log.error(ex.getMessage());
         FieldError fieldError = ex.getBindingResult().getFieldError();
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-        baseResponse.setError(getExceptionMessage(ExceptionCodes.NOT_VALID_PAYLOAD, request));
+        baseResponse.setError(ExceptionCodes.NOT_VALID_PAYLOAD);
         if (fieldError != null)
             baseResponse.setError(fieldError.getField() + ", " + fieldError.getDefaultMessage());
         return baseResponse;
@@ -51,10 +51,10 @@ public class ExceptionsHandler {
     @ExceptionHandler(value = {HttpMessageNotReadableException.class})
     @ResponseBody
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public BaseResponse<Object> handleMethodArgumentNotValid(HttpMessageNotReadableException ex, HttpServletRequest request) {
+    public BaseResponse<Object> handleMethodArgumentNotValid(HttpMessageNotReadableException ex) {
         log.error(ex.getMessage());
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-        baseResponse.setError(getExceptionMessage(ExceptionCodes.NOT_VALID_PAYLOAD, request));
+        baseResponse.setError(ExceptionCodes.NOT_VALID_PAYLOAD);
         return baseResponse;
     }
 
@@ -97,9 +97,9 @@ public class ExceptionsHandler {
     @ExceptionHandler(value = {BadCredentialsException.class})
     @ResponseBody
     @ResponseStatus(HttpStatus.CONFLICT)
-    public BaseResponse<Object> handleBadCredentialsException(BadCredentialsException ex, HttpServletRequest request) {
+    public BaseResponse<Object> handleBadCredentialsException(BadCredentialsException ex) {
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-        baseResponse.setError(getExceptionMessage(ExceptionCodes.AUTH_LOGIN_WRONG_FIELDS, request));
+        baseResponse.setError(ExceptionCodes.AUTH_LOGIN_WRONG_FIELDS);
         return baseResponse;
 
     }
@@ -109,7 +109,7 @@ public class ExceptionsHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public BaseResponse<Object> handle(HttpRequestMethodNotSupportedException ex) {
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-        baseResponse.setError(ExceptionCodes.HTTP_REQUEST_METHOD_NOT_SUPPORTED_EXCEPTION.getEl() + " Method: " + ex.getMethod());
+        baseResponse.setError(ExceptionCodes.HTTP_REQUEST_METHOD_NOT_SUPPORTED_EXCEPTION + " Method: " + ex.getMethod());
         return baseResponse;
     }
 
@@ -117,20 +117,12 @@ public class ExceptionsHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public BaseResponse<Object> handle(Exception ex, HttpServletRequest request, HttpServletResponse response) {
+    public BaseResponse<Object> handle(Exception ex) {
         log.error(ex.getMessage());
         BaseResponse<Object> baseResponse = new BaseResponse<>(false);
-        baseResponse.setError(getExceptionMessage(ExceptionCodes.SOMETHING_WRONG, request));
+        baseResponse.setError(ExceptionCodes.SOMETHING_WRONG);
         return baseResponse;
     }
 
-
-    public static String getExceptionMessage(ExceptionCodes exceptionCode, HttpServletRequest request) {
-        if ("el".equals(request.getHeader("language"))) {
-            return exceptionCode.getEl();
-        } else {
-            return exceptionCode.getEn();
-        }
-    }
 
 }

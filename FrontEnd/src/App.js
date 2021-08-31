@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import cookie from 'react-cookies';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Login from './components/login/Login';
@@ -18,6 +19,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { setAddTaskAction } from './redux/actions/setAddTask';
 import { userLogout } from './redux/actions/userLogout';
+import Statics from './components/Util/Statics';
 
 function App() {
   const isLogged = useSelector((state) => state.isLogged);
@@ -48,6 +50,8 @@ function App() {
 
   useEffect(() => {
     if (!isLogged) {
+      cookie.remove(Statics.REFRESH_TOKEN);
+      cookie.remove(Statics.ACCESS_TOKEN);
       setShowAddTask(false);
     }
   }, [isLogged]);
@@ -86,13 +90,9 @@ function App() {
         <AddTask onAdd={addTask} deleteAll={showAddTask} />
       </Collapse>
 
-      <Route
-        exact
-        path='/'
-        render={() => (isLogged ? <Main /> : <Redirect to='/login' />)}
-      />
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/register' component={Register} />
+      <Route exact path='/' render={() => (isLogged ? <Main /> : <Redirect to='/login' />)} />
+      <Route exact path='/login' render={() => (!isLogged ? <Login /> : <Redirect to='/' />)} />
+      <Route exact path='/register' render={() => (!isLogged ? <Register /> : <Redirect to='/' />)} />
 
       <Dialog
         open={openDialog}
@@ -101,24 +101,13 @@ function App() {
         aria-describedby='alert-dialog-description'
       >
         <DialogContent>
-          <DialogContentText id='alert-dialog-description'>
-            Please confirm the logout action
-          </DialogContentText>
+          <DialogContentText id='alert-dialog-description'>Please confirm the logout action</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            id={'ropjhiogr'}
-            onClick={(e) => handleClose(e)}
-            color='primary'
-            autoFocus
-          >
+          <Button id={'ropjhiogr'} onClick={(e) => handleClose(e)} color='primary' autoFocus>
             stay
           </Button>
-          <Button
-            id={'ropjhiogr'}
-            onClick={(e) => handleClose(e)}
-            color='primary'
-          >
+          <Button id={'ropjhiogr'} onClick={(e) => handleClose(e)} color='primary'>
             logout
           </Button>
         </DialogActions>

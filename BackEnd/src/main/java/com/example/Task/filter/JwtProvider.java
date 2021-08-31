@@ -43,24 +43,36 @@ public class JwtProvider {
     }
 
 
-    public String verifyRefreshTokenReturnEmail(String token){
+    public String verifyRefreshTokenReturnEmail(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(refreshTokenSecret.getBytes());
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT decodedJWT = verifier.verify(token);
             return decodedJWT.getSubject();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new ConflictException(ExceptionCodes.REFRESH_TOKEN_NOT_VALID);
         }
     }
 
-    public String verifyAccessTokenReturnEmail(String token){
+    public String verifyAccessTokenReturnEmail(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(accessTokenSecret.getBytes());
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT decodedJWT = verifier.verify(token);
             return decodedJWT.getSubject();
-        }catch (Exception ex){
+        } catch (Exception ex) {
+            throw new ConflictException(ExceptionCodes.ACCESS_TOKEN_NOT_VALID);
+        }
+    }
+
+    public boolean checkRefreshTokenExpirationTime(String token) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(refreshTokenSecret.getBytes());
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT decodedJWT = verifier.verify(token);
+            long currentRefreshTokenExpiration = decodedJWT.getExpiresAt().getTime() / 1000;
+            return (accessTokenExpiration * 2) >= (currentRefreshTokenExpiration - Instant.now().getEpochSecond());
+        } catch (Exception ex) {
             throw new ConflictException(ExceptionCodes.REFRESH_TOKEN_NOT_VALID);
         }
     }

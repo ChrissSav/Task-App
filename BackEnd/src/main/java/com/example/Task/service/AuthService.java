@@ -73,23 +73,24 @@ public class AuthService {
     }
 
 
+
     public AccessRefreshTokenResponse refreshToken(String refreshToken) {
-        if (refreshToken.length() > 0) {
-            try {
-                String email = jwtProvider.verifyRefreshTokenReturnEmail(refreshToken);
-                User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User name not found - " + email));
-                AccessRefreshTokenResponse accessRefreshTokenResponse = new AccessRefreshTokenResponse();
-                accessRefreshTokenResponse.setAccessToken(jwtProvider.generateAccessToken(user.getEmail()));
-                accessRefreshTokenResponse.setRefreshToken(refreshToken);
-                return accessRefreshTokenResponse;
-            } catch (Exception exception) {
-                throw new ConflictException(ExceptionCodes.REFRESH_TOKEN_NOT_VALID);
-            }
-        } else {
+        try {
+            String email = jwtProvider.verifyRefreshTokenReturnEmail(refreshToken);
+            User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User name not found - " + email));
+            AccessRefreshTokenResponse accessRefreshTokenResponse = new AccessRefreshTokenResponse();
+            // Check if refreshToken expiration time is enough to refresh again the accessToken
+            // if not update the refreshToken
+            if(jwtProvider.checkRefreshTokenExpirationTime(refreshToken))
+                refreshToken = jwtProvider.generateRefreshToken(user.getEmail());
+            accessRefreshTokenResponse.setAccessToken(jwtProvider.generateAccessToken(user.getEmail()));
+            accessRefreshTokenResponse.setRefreshToken(refreshToken);
+            return accessRefreshTokenResponse;
+        } catch (Exception exception) {
             throw new ConflictException(ExceptionCodes.REFRESH_TOKEN_NOT_VALID);
         }
-    }
 
+    }
 
 
     public User getCurrentUser() {
