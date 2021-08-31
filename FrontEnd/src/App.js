@@ -36,7 +36,6 @@ function App() {
 
   // set delay because the collapse is lagging on open
   useEffect(() => {
-    console.log(errorText, 'errorText');
     if (errorText.length > 1) {
       setOpen(true);
       window.setTimeout(() => {

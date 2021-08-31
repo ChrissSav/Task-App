@@ -59,7 +59,6 @@ const Login = () => {
       <form className='login-register-form' onSubmit={onSubmit}>
         <div>
           <TextField
-            id='standard-basic'
             required
             className='login-form-input'
             style={{ width: '100%', marginBottom: '60px' }}

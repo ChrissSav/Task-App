@@ -49,11 +49,12 @@ const Main = () => {
         'No Tasks to Show'
       )}
       <button
+        style={{ margin: '40px 10px' }}
         onClick={() => {
           getTasks();
         }}
       >
-        rgfregergerg
+        Get All Tasks
       </button>
     </div>
   );

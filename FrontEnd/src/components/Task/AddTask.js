@@ -39,7 +39,6 @@ const AddTask = ({ onAdd, deleteAll }) => {
         style={{ margin: '30px', paddingBottom: '30px' }}
       >
         <TextField
-          id='standard-basic'
           required
           value={text}
           onChange={(d) => {

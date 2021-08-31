@@ -49,7 +49,6 @@ const Register = () => {
     <div>
       <form className='login-register-form' onSubmit={onSubmit}>
         <TextField
-          id='standard-basic'
           required
           style={{ width: '100%', marginBottom: '35px' }}
           label='Firs name'
@@ -59,7 +58,6 @@ const Register = () => {
           }}
         />
         <TextField
-          id='standard-basic'
           required
           style={{ width: '100%', marginBottom: '35px' }}
           label='Last name'
@@ -69,7 +67,6 @@ const Register = () => {
           }}
         />
         <TextField
-          id='standard-basic'
           required
           type='email'
           style={{ width: '100%', marginBottom: '35px' }}
