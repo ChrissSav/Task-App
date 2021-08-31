@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import TaskShimmer from './shimmer/taskShimmer';
 import Tasks from './task/Tasks';
 import axiosApp from './Util/axiosApp';
 
 const Main = () => {
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(false);
   const newTask = useSelector((state) => state.addTask);
 
   const getTasks = async () => {
+    setTasks([]);
+    setLoading(true);
     const tasksFromServer = await axiosApp.get('/tasks');
+    setLoading(false);
     setTasks(tasksFromServer);
   };
 
@@ -34,11 +39,7 @@ const Main = () => {
       },
     });
 
-    setTasks(
-      tasks.map((task) =>
-        task.id === task_id ? { ...task, reminder: newTask.reminder } : task
-      )
-    );
+    setTasks(tasks.map((task) => (task.id === task_id ? { ...task, reminder: newTask.reminder } : task)));
   };
 
   return (
@@ -46,8 +47,16 @@ const Main = () => {
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
-        'No Tasks to Show'
+        !loading && 'No Tasks to Show'
       )}
+      {loading && (
+        <div>
+          <TaskShimmer />
+          <TaskShimmer />
+          <TaskShimmer />
+        </div>
+      )}
+
       <button
         style={{ margin: '40px 10px' }}
         onClick={() => {

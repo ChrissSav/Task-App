@@ -57,7 +57,7 @@ function App() {
   }, [isLogged]);
 
   const addTask = (task) => {
-    axiosApp.post('/task', task).then((data) => {
+    axiosApp.post('/tasks', task).then((data) => {
       dispatch(setAddTaskAction(data));
       setShowAddTask(false);
     });
