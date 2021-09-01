@@ -43,7 +43,7 @@ const Main = () => {
   };
 
   return (
-    <div className='contadiner'>
+    <div className='container'>
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (

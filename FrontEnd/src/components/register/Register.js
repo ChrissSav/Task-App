@@ -10,10 +10,10 @@ import PasswordField from 'material-ui-password-field';
 import { FormControl } from '@material-ui/core';
 
 const Register = () => {
-  const [firstName, setFirstName] = useState('setFirstName');
-  const [lastName, setLastName] = useState('setLastName');
-  const [email, setEmail] = useState('firstNadme@gmail.com');
-  const [password, setPassword] = useState('firstName');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
@@ -39,7 +39,7 @@ const Register = () => {
         <TextField
           required
           style={{ width: '100%', marginBottom: '35px' }}
-          label='Firs name'
+          label='First name'
           value={firstName}
           onChange={(e) => {
             setFirstName(e.target.value);
@@ -58,7 +58,7 @@ const Register = () => {
           required
           type='email'
           style={{ width: '100%', marginBottom: '35px' }}
-          label='Last name'
+          label='Email'
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
