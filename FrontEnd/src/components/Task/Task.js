@@ -1,12 +1,9 @@
 import { FaTimes } from 'react-icons/fa';
-import Statics from '../Util/Statics';
+import Statics from '../util/Statics';
 
 const Task = ({ task, onDelete, onToggle }) => {
   return (
-    <div
-      className={`task ${task.reminder ? 'reminder' : ''}`}
-      onDoubleClick={() => onToggle(task.id, task.reminder)}
-    >
+    <div className={`task ${task.reminder ? 'reminder' : ''}`} onDoubleClick={() => onToggle(task.id, task.reminder)}>
       <h3>
         {task.text}{' '}
         <FaTimes
@@ -17,9 +14,7 @@ const Task = ({ task, onDelete, onToggle }) => {
           onClick={() => onDelete(task.id)}
         />
       </h3>
-      <p>
-        {Statics.getDateFromTimestamp(task.timestamp, Statics.TASK_DATE_FORMAT)}
-      </p>
+      <p>{Statics.getDateFromTimestamp(task.timestamp, Statics.TASK_DATE_FORMAT)}</p>
     </div>
   );
 };

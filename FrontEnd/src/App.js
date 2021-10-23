@@ -7,7 +7,7 @@ import Login from './components/login/Login';
 import Main from './components/Main';
 import Register from './components/register/Register';
 import AddTask from './components/task/AddTask';
-import axiosApp from './components/Util/axiosApp';
+import axiosApp from './components/util/axiosApp';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import { Collapse } from '@material-ui/core';
@@ -19,7 +19,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { setAddTaskAction } from './redux/actions/setAddTask';
 import { userLogout } from './redux/actions/userLogout';
-import Statics from './components/Util/Statics';
+import Statics from './components/util/Statics';
 
 function App() {
   const isLogged = useSelector((state) => state.isLogged);

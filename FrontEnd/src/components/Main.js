@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import TaskShimmer from './shimmer/taskShimmer';
 import Tasks from './task/Tasks';
-import axiosApp from './Util/axiosApp';
+import axiosApp from './util/axiosApp';
 
 const Main = () => {
   const [tasks, setTasks] = useState([]);

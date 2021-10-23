@@ -3,17 +3,17 @@ import AlertTitle from '@material-ui/lab/AlertTitle';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/actions/userLogin';
-import axiosApp from '../Util/axiosApp';
-import Statics from '../Util/Statics';
+import axiosApp from '../util/axiosApp';
+import Statics from '../util/Statics';
 import PasswordField from 'material-ui-password-field';
 import { FormControl } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 
 const Login = () => {
-  const [email, setEmail] = useState('firstNadme@gmail.com');
+  const [email, setEmail] = useState('');
   const [errorText, setErrorText] = useState('');
-  const [password, setPassword] = useState('firstName');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {

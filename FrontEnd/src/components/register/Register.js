@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import cookie from 'react-cookies';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/actions/userLogin';
-import axiosApp from '../Util/axiosApp';
-import Statics from '../Util/Statics';
+import axiosApp from '../util/axiosApp';
+import Statics from '../util/Statics';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import PasswordField from 'material-ui-password-field';

@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
-import Statics from '../Util/Statics';
+import Statics from '../util/Statics';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import TextField from '@material-ui/core/TextField';
 
 const AddTask = ({ onAdd, deleteAll }) => {
@@ -33,11 +30,7 @@ const AddTask = ({ onAdd, deleteAll }) => {
 
   return (
     <div className='add-form-div'>
-      <form
-        className='add-form'
-        onSubmit={onSubmit}
-        style={{ margin: '30px', paddingBottom: '30px' }}
-      >
+      <form className='add-form' onSubmit={onSubmit} style={{ margin: '30px', paddingBottom: '30px' }}>
         <TextField
           required
           value={text}

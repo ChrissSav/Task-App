@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import cookie from 'react-cookies';
-import Statics from '../components/Util/Statics';
+import Statics from '../components/util/Statics';
 import allReducers from './reducers';
 
 const LOCAL_STORAGE_NAME = 'localData';
@@ -34,8 +34,7 @@ class PersistedStore {
     this._store = createStore(
       allReducers,
       current,
-      window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__()
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
     this._store.subscribe(() => {
       // console.log('subscribe');
