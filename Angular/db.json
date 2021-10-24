@@ -10,13 +10,19 @@
       "id": 2,
       "text": "Meeting at School",
       "day": "May 6th at 2:30pm",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": 3,
       "text": "rgregytht at School",
       "day": "May efefef at 2:30pm",
-      "reminder": false
+      "reminder": true
+    },
+    {
+      "text": "Makis takis",
+      "day": "May efefef at 2:30pm",
+      "reminder": false,
+      "id": 4
     }
   ]
 }
