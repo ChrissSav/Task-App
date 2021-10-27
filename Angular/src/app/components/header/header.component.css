@@ -1,6 +1,14 @@
 header {
+  min-height: 100px;
+  padding: 20px 20px;
+  border-bottom-style: solid;
+  border-bottom-color: blue;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+}
+
+h1 {
+  cursor: pointer;
 }

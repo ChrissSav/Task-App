@@ -1,41 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: inherit;
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  padding-bottom: 50px;
 }
 
 .container {
-  max-width: 80%;
+  width: 90%;
   margin: 30px auto;
   overflow: auto;
-  min-height: 300px;
-  border: 1px solid steelblue;
-  padding: 30px;
-  border-radius: 5px;
+  padding: 0px 15px;
 }
+
 .btn {
   display: inline-block;
   background: #000;
   color: #fff;
   border: none;
   padding: 10px 20px;
-  margin: 5px;
+  margin: 5px 0px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
 }
+
 .btn:focus {
   outline: none;
 }
+
 .btn:active {
   transform: scale(0.98);
 }
@@ -43,6 +44,36 @@ body {
 .btn-block {
   display: block;
   width: 100%;
+}
+
+.task {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.task.reminder {
+  border-left: 5px solid green;
+}
+
+.task h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-form-div {
+  display: block;
+  text-align: center;
+}
+.add-form {
+  display: inline-block;
+  margin-bottom: 40px;
+  width: 70%;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-control {
@@ -56,8 +87,7 @@ body {
 .form-control input {
   width: 100%;
   height: 40px;
-  margin: 5px;
-  padding: 3px 7px;
+  margin-top: 5px;
   font-size: 17px;
 }
 
@@ -74,4 +104,60 @@ body {
 .form-control-check input {
   flex: 2;
   height: 20px;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.center {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.login-register-form {
+  width: 60%;
+  max-width: 700px;
+  margin: auto;
+  height: 100%;
+  padding-top: 100px;
+}
+
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.skeleton-text {
+  width: 100%;
+  height: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0.3rem;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
 }

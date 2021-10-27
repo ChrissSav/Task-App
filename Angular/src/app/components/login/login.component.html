@@ -1,0 +1,36 @@
+<div>
+  <form ngNativeValidate (ngSubmit)="onSubmit()" class="login-register-form">
+    <div>
+      <label>email</label>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        class="login-form-input"
+        required
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <div>
+      <label>password</label>
+      <input
+        type="password"
+        [(ngModel)]="password"
+        required
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <input
+      type="submit"
+      value="Login"
+      class="btn btn-block"
+      [ngStyle]="{ 'background-color': 'green', 'margin-top': '50px' }"
+    />
+  </form>
+
+  <div class="center">
+    <h3>
+      If you don't have an account.
+      <i> <a href="/register">Register now.</a> </i>
+    </h3>
+  </div>
+</div>

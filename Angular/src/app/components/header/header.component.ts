@@ -23,4 +23,12 @@ export class HeaderComponent implements OnInit {
   toggleAddTask() {
     this.uiService.toggleAddTask();
   }
+
+  onLogoutClick() {
+    console.log('onLogoutClick');
+  }
+
+  redirectToHome() {
+    window.location.href = '/';
+  }
 }
