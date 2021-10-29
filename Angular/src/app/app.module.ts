@@ -13,6 +13,8 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { LoginComponent } from './components/login/login.component';
 import { ErrorViewComponent } from './components/error-view/error-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 const appRoutes: Routes = [
   { path: '', component: TasksComponent },
@@ -35,7 +37,9 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    MaterialModule,
     RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

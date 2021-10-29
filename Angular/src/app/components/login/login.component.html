@@ -1,24 +1,32 @@
 <div>
   <form ngNativeValidate (ngSubmit)="onSubmit()" class="login-register-form">
-    <div>
-      <label>email</label>
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
       <input
+        matInput
+        placeholder="example@example.com"
+        required
         type="email"
         [(ngModel)]="email"
-        class="login-form-input"
-        required
         [ngModelOptions]="{ standalone: true }"
       />
-    </div>
-    <div>
-      <label>password</label>
+    </mat-form-field>
+    <mat-form-field [ngStyle]="{ margin: '40px 0px 80px 0px' }">
+      <mat-label>Enter your password</mat-label>
       <input
-        type="password"
-        [(ngModel)]="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        placeholder="example@example.com"
         required
+        minlength="4"
+        [(ngModel)]="password"
         [ngModelOptions]="{ standalone: true }"
       />
-    </div>
+      <mat-icon matSuffix (click)="hide = !hide">{{
+        hide ? "visibility_off" : "visibility"
+      }}</mat-icon>
+    </mat-form-field>
+
     <input
       type="submit"
       value="Login"

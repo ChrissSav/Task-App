@@ -6,9 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./error-view.component.css'],
 })
 export class ErrorViewComponent implements OnInit {
-  message: String = 'sERROR_API_UNREACHABLE';
+  message: String = 'ERROR_API_UNREACHABLE';
   showError: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}
+
+  close() {
+    this.showError = false;
+  }
+
+  show() {
+    this.showError = true;
+    window.setTimeout(() => {
+      this.showError = false;
+    }, 1500);
+  }
 }
