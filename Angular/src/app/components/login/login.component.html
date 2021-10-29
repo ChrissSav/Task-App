@@ -11,7 +11,7 @@
         [ngModelOptions]="{ standalone: true }"
       />
     </mat-form-field>
-    <mat-form-field [ngStyle]="{ margin: '40px 0px 80px 0px' }">
+    <mat-form-field>
       <mat-label>Enter your password</mat-label>
       <input
         matInput
@@ -27,12 +27,7 @@
       }}</mat-icon>
     </mat-form-field>
 
-    <input
-      type="submit"
-      value="Login"
-      class="btn btn-block"
-      [ngStyle]="{ 'background-color': 'green', 'margin-top': '50px' }"
-    />
+    <input type="submit" value="Login" class="btn btn-block" />
   </form>
 
   <div class="center">

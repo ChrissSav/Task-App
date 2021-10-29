@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     setErrorText('');
     axiosApp
-      .post('/login', {
+      .post('/auth/login', {
         email: email,
         password: password,
       })
@@ -50,6 +50,7 @@ const Login = () => {
             className='login-form-input'
             style={{ width: '100%', marginBottom: '60px' }}
             label='Email'
+            id='email'
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -60,6 +61,7 @@ const Login = () => {
             <PasswordField
               value={password}
               required
+              id='password'
               onChange={(e) => {
                 setPassword(e.target.value);
               }}

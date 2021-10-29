@@ -1,0 +1,64 @@
+<div>
+  <form ngNativeValidate (ngSubmit)="onSubmit()" class="login-register-form">
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input
+        matInput
+        required
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="firstName"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input
+        matInput
+        required
+        id="lastName"
+        name="lastName"
+        type="email"
+        [(ngModel)]="lastName"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="example@example.com"
+        required
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        placeholder="example@example.com"
+        required
+        minlength="4"
+        [(ngModel)]="password"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <mat-icon matSuffix (click)="hide = !hide">{{
+        hide ? "visibility_off" : "visibility"
+      }}</mat-icon>
+    </mat-form-field>
+
+    <input id="submit" type="submit" value="Register" class="btn btn-block" />
+  </form>
+
+  <div class="center">
+    <h3>
+      If you have an account.
+      <i> <a href="/login">Login now.</a> </i>
+    </h3>
+  </div>
+</div>

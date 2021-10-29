@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -36,7 +36,7 @@ public class AuthController {
         return baseResponse;
     }
 
-    @PostMapping("/token/refresh")
+    @PostMapping("/token-refresh")
     public BaseResponse<AccessRefreshTokenResponse> refreshToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
         AccessRefreshTokenResponse accessRefreshTokenResponse = authService.refreshToken(refreshTokenRequest.getRefreshToken());
         BaseResponse<AccessRefreshTokenResponse> baseResponse = new BaseResponse<>();

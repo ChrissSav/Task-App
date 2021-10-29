@@ -23,7 +23,7 @@ function getLocalRefreshToken() {
 }
 
 function refreshTokenApi() {
-  return axiosApp.post('/token/refresh', {
+  return axiosApp.post('/auth/token-refresh', {
     refreshToken: getLocalRefreshToken(),
   });
 }
@@ -44,6 +44,7 @@ axiosApp.interceptors.request.use(
       config.headers['Authorization'] = 'Bearer ' + token;
     }
     //console.log(config);
+    dispatch(setErrorTextAction(''));
     return config;
   },
   (error) => {
@@ -54,15 +55,21 @@ axiosApp.interceptors.request.use(
 
 axiosApp.interceptors.response.use(
   (res) => {
-    dispatch(setErrorTextAction(''));
     return res.data.data;
   },
   async (err) => {
     // console.log('axiosApp.interceptors.response.use(');
     const originalConfig = err.config;
     // Access Token was expired
+    console.log(originalConfig.url);
     try {
-      if (err.response.status === 403 && !originalConfig._retry) {
+      if (
+        err.response.status === 403 &&
+        !originalConfig._retry &&
+        !originalConfig.url.includes('login') &&
+        !originalConfig.url.includes('register') &&
+        !originalConfig.url.includes('token')
+      ) {
         console.log('Access Token was expired');
         originalConfig._retry = true;
         try {

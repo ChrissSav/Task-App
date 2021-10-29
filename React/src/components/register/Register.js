@@ -18,7 +18,7 @@ const Register = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     axiosApp
-      .post('/register', {
+      .post('/auth/register', {
         firstName,
         lastName,
         email,

@@ -15,10 +15,12 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorViewComponent } from './components/error-view/error-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { RegisterComponent } from './components/register/register.component';
 
 const appRoutes: Routes = [
   { path: '', component: TasksComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -31,6 +33,7 @@ const appRoutes: Routes = [
     AddTaskComponent,
     LoginComponent,
     ErrorViewComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
